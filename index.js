@@ -136,13 +136,23 @@ async function run() {
             const result = await usersCollection.updateOne(filter, updateDoc, options)
             res.send(result)
         })
+
         app.get('/admin/users/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email: email };
             const user = await usersCollection.findOne(query);
             console.log(user);
             res.send({ isAdmin: user?.role === "admin" })
+        });
+        
+        app.get('/sellers/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { email: email };
+            const user = await usersCollection.findOne(query);
+            console.log(user);
+            res.send({ isSeller: user?.role === "seller" })
         })
+
 
     }
     finally {
