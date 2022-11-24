@@ -18,6 +18,7 @@ async function run() {
     try {
         const categoryCollection = client.db('secondSell').collection('categories');
         const sportsCategoryCollection = client.db('secondSell').collection('sportsCategory');
+        const usersCollection = client.db('secondSell').collection('users');
 
         app.get('/categories', async (req, res) => {
             const query = {}
@@ -37,6 +38,12 @@ async function run() {
             const sportscategories =await sportsCategoryCollection.find(query).toArray()
             res.send(sportscategories)
 
+        })
+        app.post('/users', async(req,res)=>{
+            const info  = req.body;
+            const users = await usersCollection.insertOne(info)
+            console.log(users);
+            res.send(users)
         })
 
     }
