@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Honda CBR 150R Repsol ABS ",
+        "img": "https://i.ibb.co/72xfBPL/honda-cbr-150r-repsol-abs602ce0f90b8c9.webp",
+        "location": "Dhaka",
+        "resale-price": 321000,
+        "original-price": 480000,
+        "used": "1year",
+        "data-posted": "12-Nov-2022",
+        "sellers-name": "Nafiz Iqbal",
+        "category" : "Sport Bike"
+    },
+    {
+        "name": "Lifan KPR 150 ",
+        "img": "https://i.ibb.co/2k41jHb/lifan-kpr-1506088f7566e1df.webp",
+        "location": "Dhaka",
+        "resale-price": 132000,
+        "original-price": 185000,
+        "used": "1year",
+        "data-posted": "12-Nov-2022",
+        "sellers-name": "Nafiz Iqbal",
+        "category" : "Sport Bike"
+    },
+    {
+        "name": "Yamaha R15 V3 Indian Version Dual ABS ",
+        "img": "https://i.ibb.co/b7kycsr/yamaha-r15-v3-indian-version-d62038cf32435f.webp",
+        "location": "Dhaka",
+        "resale-price": 32000,
+        "original-price": 479000,
+        "used": "1year",
+        "data-posted": "12-Nov-2022",
+        "sellers-name": "Nafiz Iqbal",
+        "category" : "Sport Bike"
+    },
+
+    {
+        "name": "Aprilia Cafe 150",
+        "img": "https://i.ibb.co/VmWMPtc/aprilia-cafe-150607fc2f5376d3.webp",
+        "location": "Dhaka",
+        "resale-price": 120000,
+        "original-price": 170000,
+        "used": "1year",
+        "data-posted": "12-Nov-2022",
+        "sellers-name": "Nafiz Iqbal",
+        "category" : "Cafe Racer"
+    },
+    {
+        "name": "GPX Legend 150S ",
+        "img": "https://i.ibb.co/dt1hFCT/gpx-legend-150s6087c9a58fc69.webp",
+        "location": "Dhaka",
+        "resale-price": 110000,
+        "original-price": 160000,
+        "used": "1year",
+        "data-posted": "12-Nov-2022",
+        "sellers-name": "Nafiz Iqbal",
+        "category" : "Cafe Racer"
+    },
+    {
+        "name": "Yamaha XSR Indian Version Dual ABS ",
+        "img": "https://i.ibb.co/sHf8t07/yamaha-xsr-155603102e27bae0.webp",
+        "location": "Dhaka",
+        "resale-price": 32000,
+        "original-price": 479000,
+        "used": "1year",
+        "data-posted": "12-Nov-2022",
+        "sellers-name": "Nafiz Iqbal",
+        "category" : "Cafe Racer"
+    },
+    {
+        "name": "Yamaha Saluto 125 UBS",
+        "img": "https://i.ibb.co/7pHj4D1/Yamaha-Saluto-125-UBS.jpg",
+        "location": "Dhaka",
+        "resale-price": 32000,
+        "original-price": 479000,
+        "used": "1year",
+        "data-posted": "12-Nov-2022",
+        "sellers-name": "Nafiz Iqbal",
+        "category" : "Standard"
+    },
+    {
+        "name": "Hundai GL 150 Premio",
+        "img": "https://i.ibb.co/3mg4Zkg/Hundai-GL-150-Premio.jpg",
+        "location": "Dhaka",
+        "resale-price": 32000,
+        "original-price": 479000,
+        "used": "1year",
+        "data-posted": "12-Nov-2022",
+        "sellers-name": "Nafiz Iqbal",
+        "category" : "Standard"
+    },
+    {
+        "name": "Runner Royal Plus ",
+        "img": "https://i.ibb.co/L602PXk/Runner-Royal-Plus.jpg",
+        "location": "Dhaka",
+        "resale-price": 32000,
+        "original-price": 479000,
+        "used": "1year",
+        "data-posted": "12-Nov-2022",
+        "sellers-name": "Nafiz Iqbal",
+        "category" : "Standard"
+    }
+]
