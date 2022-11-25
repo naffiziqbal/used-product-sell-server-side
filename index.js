@@ -59,6 +59,7 @@ async function run() {
             const categories = await categoryCollection.find(query).toArray();
             res.send(categories)
         });
+
         app.get('/product/:category', async (req, res) => {
             const filter = req.params.category;
             const query = { category: filter }
@@ -144,7 +145,7 @@ async function run() {
             console.log(user);
             res.send({ isAdmin: user?.role === "admin" })
         });
-        
+
         app.get('/sellers/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email: email };
@@ -153,11 +154,21 @@ async function run() {
             res.send({ isSeller: user?.role === "seller" })
         })
 
+        app.get('/allsellers/:role', async (req, res) => {
+            const role = req.params.role
+            const filter = { role: role}
+            const result = await usersCollection.find(filter).toArray();
+            console.log(result);
+            
+            res.send(result)
 
-    }
+        })
+
+
+}
     finally {
 
-    }
+}
 }
 run().catch(err => console.log(err)
 )
