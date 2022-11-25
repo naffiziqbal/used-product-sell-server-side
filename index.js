@@ -40,6 +40,7 @@ async function run() {
         const categoryCollection = client.db('secondSell').collection('bikeCategory');
 
         const usersCollection = client.db('secondSell').collection('users');
+        const bookingCollections = client.db('secondSell').collection('bookings');
 
         const verifyAdmin = async (req, res, next) => {
             const decodedEmail = req.decoded.email;
@@ -59,6 +60,14 @@ async function run() {
             const categories = await categoryCollection.find(query).toArray();
             res.send(categories)
         });
+
+        app.post('/categories', async (req, res) => {
+            const productInfo = req.body;
+            const result = await categoryCollection.insertOne(productInfo);
+            res.send(result)
+        })
+
+
 
         app.get('/product/:category', async (req, res) => {
             const filter = req.params.category;
@@ -111,7 +120,7 @@ async function run() {
             console.log(users);
             res.send(users)
         })
-        app.delete('/admin/users/:id', async (req, res) => {
+        app.delete('/users/:id', async (req, res) => {
             const id = req.params.id;
             const filter = { _id: ObjectId(id) }
             const result = await usersCollection.deleteOne(filter);
@@ -125,6 +134,7 @@ async function run() {
             res.send(users)
         })
 
+        //  Update User As Admin
         app.put('/admin/users/:id', async (req, res) => {
             const id = req.params.id
             const filter = { _id: ObjectId(id) };
@@ -137,7 +147,6 @@ async function run() {
             const result = await usersCollection.updateOne(filter, updateDoc, options)
             res.send(result)
         })
-
         app.get('/admin/users/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email: email };
@@ -145,6 +154,29 @@ async function run() {
             console.log(user);
             res.send({ isAdmin: user?.role === "admin" })
         });
+
+        // Varification 
+        app.put('/admin/sellers/:id', async (req, res) => {
+            const id = req.params.id
+            const filter = { _id: ObjectId(id) };
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                    varification : 'varified'
+                }
+            }
+            const result = await usersCollection.updateOne(filter, updateDoc, options)
+            res.send(result)
+        })
+
+        app.get('/admin/sellers/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { email: email };
+            const user = await usersCollection.findOne(query);
+            console.log(user);
+            res.send({ isVarified: user?.varification === "varified" })
+        });
+
 
         app.get('/sellers/:email', async (req, res) => {
             const email = req.params.email;
@@ -154,21 +186,36 @@ async function run() {
             res.send({ isSeller: user?.role === "seller" })
         })
 
-        app.get('/allsellers/:role', async (req, res) => {
+        app.get('/users/:role', async (req, res) => {
             const role = req.params.role
-            const filter = { role: role}
+            const filter = { role: role }
             const result = await usersCollection.find(filter).toArray();
             console.log(result);
-            
+
             res.send(result)
 
         })
 
+        // MY Product
+        app.get('/categories/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { email: email }
+            const result = await categoryCollection.find(query).toArray()
+            res.send(result)
+        })
 
-}
+        //Book Product 
+        app.post('/bookings', async (req, res) => {
+            const productData = req.body;
+            const result = await bookingCollections.insertOne(productData);
+            res.send(result)
+        })
+
+
+    }
     finally {
 
-}
+    }
 }
 run().catch(err => console.log(err)
 )
