@@ -191,9 +191,14 @@ async function run() {
             const filter = { role: role }
             const result = await usersCollection.find(filter).toArray();
             console.log(result);
-
             res.send(result)
 
+        })
+        app.get('/user/:email', async(req,res)=>{
+            const email = req.params.email;
+            const filter = {email : email};
+            const result = await usersCollection.findOne(filter)
+            res.send(result)
         })
 
         // MY Product
