@@ -42,6 +42,8 @@ async function run() {
         const usersCollection = client.db('secondSell').collection('users');
         const bookingCollections = client.db('secondSell').collection('bookings');
 
+        const reviewCollection = client.db('secondSell').collection('reviews')
+
         const verifyAdmin = async (req, res, next) => {
             const decodedEmail = req.decoded.email;
             const query = { email: decodedEmail }
@@ -217,6 +219,17 @@ async function run() {
         })
 
 
+        // Review Panel 
+        app.post('/review', async(req, res)=>{
+            const review = req.body;
+            const result = await reviewCollection.insertOne(review)
+            res.send(result)
+        })
+        app.get('/review', async(req, res)=>{
+            const review = req.body;
+            const result = await reviewCollection.find(review).toArray()
+            res.send(result)
+        })
     }
     finally {
 
