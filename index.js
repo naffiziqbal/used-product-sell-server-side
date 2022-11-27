@@ -43,6 +43,7 @@ async function run() {
         const bookingCollections = client.db('secondSell').collection('bookings');
 
         const reviewCollection = client.db('secondSell').collection('reviews')
+        const blogCollections = client.db('secondSell').collection('blogs')
 
         const verifyAdmin = async (req, res, next) => {
             const decodedEmail = req.decoded.email;
@@ -164,7 +165,7 @@ async function run() {
             const options = { upsert: true };
             const updateDoc = {
                 $set: {
-                    varification : 'varified'
+                    varification: 'varified'
                 }
             }
             const result = await usersCollection.updateOne(filter, updateDoc, options)
@@ -196,9 +197,9 @@ async function run() {
             res.send(result)
 
         })
-        app.get('/user/:email', async(req,res)=>{
+        app.get('/user/:email', async (req, res) => {
             const email = req.params.email;
-            const filter = {email : email};
+            const filter = { email: email };
             const result = await usersCollection.findOne(filter)
             res.send(result)
         })
@@ -220,15 +221,26 @@ async function run() {
 
 
         // Review Panel 
-        app.post('/review', async(req, res)=>{
+        app.post('/review', async (req, res) => {
             const review = req.body;
             const result = await reviewCollection.insertOne(review)
             res.send(result)
         })
-        app.get('/review', async(req, res)=>{
+        app.get('/review', async (req, res) => {
             const review = req.body;
             const result = await reviewCollection.find(review).toArray()
             res.send(result)
+        });
+
+        app.post('/blog', async (req, res) => {
+            const blog = req.body;
+            const result = await blogCollections.insertOne(blog)
+            res.send(result)
+        });
+        app.get('/blog', async(req,res)=> {
+            const query = {};
+            const blog = await blogCollections.find(query).toArray()
+            res.send(blog)
         })
     }
     finally {
